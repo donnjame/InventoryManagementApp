@@ -1,0 +1,23 @@
+{% extends "leet/leet_base.html" %}
+{% block body_block %}
+
+<h1>
+    {% if not form.instance.pk %}
+    Create AnthemUser
+
+    {% else %}
+
+    Update AnthemUser
+
+    {% endif %}
+</h1>
+    <div class="jumbotron">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" class='btn btn-primary' value="Submit">
+        
+    </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "leet/leet_base.html" %}
+{% block body_block %}
+  <div class="jumbotron">
+      <h1>User Details:</h1>
+      <!-- <p>id_num: {{asset_details.id}}</p> -->
+      <p>User Name: {{user_details.name}}</p>
+      <p>Department: {{user_details.department}}</p>
+      <p>Extension: {{user_details.internal_ext}}</p>
+      <p>Linked Asset: 
+        {% if user_details.anthem_users %}
+          <a href="{% url 'leet:list'%}{{user_details.anthem_users.id}}">{{user_details.anthem_users}}</a> 
+        {% endif %}     
+      </p>
+
+      <div class="position-absolute bottom-left">
+        <p><a class="btn btn-danger" href="{% url 'leet:delete_user'%}{{user_details.id}}">Delete User</a></p>
+      </div>
+
+      
+
+      
+
+
+
+
+ 
+
+
+</div>
+{% endblock %}

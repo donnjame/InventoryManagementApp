@@ -1,0 +1,27 @@
+{% extends "leet/leet_base.html" %}
+{% block body_block %}
+ <div class="jumbotron">
+    
+    <h1>Search Results:</h1>
+    
+    <ol>
+        {% for asset in object_list %}
+            {% if asset.asset_number %}
+            <h3><li><a href="{% url 'leet:list' %}{{asset.id}}">{{asset.asset_number}}</a></li></h3> 
+            <h3><li><a href="{% url 'leet:user_list' %}{{asset.anthem_user.id}}">{{asset.anthem_user}}</a></li></h3>
+            {% endif %}
+
+        {% empty %}
+        <h2>No Results, Please try again!</h2>  
+        {% endfor %}
+
+    </ol>
+
+
+
+ </div>
+
+
+
+
+{% endblock %}

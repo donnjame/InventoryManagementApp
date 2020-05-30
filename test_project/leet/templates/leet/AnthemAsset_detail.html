@@ -1,0 +1,37 @@
+{% extends "leet/leet_base.html" %}
+{% block body_block %}
+  <div class="jumbotron">
+      <h1>Welcome to the Anthem Asset Page</h1>
+      <h2>Asset Details:</h2>
+      <!-- <p>id_num: {{asset_details.id}}</p> -->
+      <p>type: {{asset_details.asset_type}}</p>
+      <p>number: {{asset_details.asset_number}}</p>
+      <p>description: {{asset_details.description}}</p>
+      <p>Assigned to: <a href="{% url 'leet:user_list' %}{{asset_details.anthem_user.id}} ">{{asset_details.anthem_user}}</a></p>
+
+      {% if asset_details.asset_picture %}
+      <p>Asset Picture:
+        <img src="{{asset_details.asset_picture.url}}" height ="420">
+      </p>
+      {% else %}
+      <p>No image of the asset has been provided</p>  
+      {% endif %}
+      
+      
+      
+      
+      
+      <div class="position-absolute bottom-left">
+        <p><a class="btn btn-danger" href="{% url 'leet:delete_obj'%}{{asset_details.id}}">Remove Asset</a></p>
+      </div>
+
+      
+
+
+
+
+ 
+
+
+</div>
+{% endblock %}

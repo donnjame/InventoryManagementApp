@@ -1,0 +1,62 @@
+{% extends "leet/leet_base.html" %}
+{% block body_block %}
+  <div class="jumbotron">
+      <h1>Welcome to the list of Users</h1>
+        <ol>
+            {% for user in anthemuser_list %}
+            <div class="list-group">
+            <div class="row mx-md-n3">
+              <div class="shadow p-2 mb-2 bg-white rounded">
+                <h3><li class=""><a href="{{user.id}}">{{user.name}}</a></li></h3>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+
+        </ol>
+    
+      {% if is_paginated %}
+        <ul class="pagination">
+          {% if page_obj.has_previous %}
+            <li><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+          {% else %}
+            <li class="page-link"><span>&laquo;</span></li>
+          {% endif %}
+          {% for i in paginator.page_range %}
+            {% if page_obj.number == i %}
+              <li class="page-link"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+            {% else %}
+              <li><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+          {% endfor %}
+          {% if page_obj.has_next %}
+            <li><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+          {% else %}
+            <li class="page-link"><span>&raquo;</span></li>
+          {% endif %}
+        </ul>
+      {% endif %}      
+    
+    <div class="position-absolute bottom-left">
+        <p><a class="btn btn-warning" href="{% url 'leet:create_user' %}">Add User</a></p>
+    </div>
+    
+        
+        
+        <!-- <ol>
+          {% for result in all_search_results %}
+            <h2><li><a href="{{asset.id}}">{{asset.asset_number}}</a></li></h2>
+          {% empty %}
+            <h2>no results</h2>
+          {% endfor %}
+
+        </ol> -->
+
+
+
+
+ 
+
+
+</div>
+{% endblock %}
